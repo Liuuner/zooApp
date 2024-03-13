@@ -1,6 +1,6 @@
 import './App.css'
 import {Route, Routes} from "react-router-dom";
-import Header from "src/components/Header.tsx";
+import Header from "src/components/header/Header.tsx";
 import Footer from "src/components/Footer.tsx";
 import Home from "src/pages/Home.tsx";
 import Tickets from "src/pages/Tickets.tsx";
@@ -21,7 +21,7 @@ function App() {
             </Routes>
             <Footer/>
         </>
-    )
+)
 }
 
 export default App
