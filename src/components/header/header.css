@@ -5,6 +5,7 @@
     background-color: var(--secondary);
     padding: 1rem;
     z-index: 5;
+    overflow: hidden;
     box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.3);
 }
 
@@ -20,16 +21,16 @@
     cursor: pointer;
 }
 
-.hamburger_circle {
+#hamburger_circle {
     position: relative;
-    width: 110px;
+    width: 125px;
     height: 110px;
     background-color: #fff;
     border-radius: 50%;
-    top: -2.25rem;
-    right: 1.35rem;
+    top: -1.5rem;
+    right: 1rem;
     z-index: -1;
-    rotate: -35deg;
+    transition: all .25s;
 }
 
 .bar {
@@ -38,7 +39,7 @@
     background-color: #000;
     position: absolute;
     border-radius: 5px;
-    transition: all .5s;
+    transition: all .25s;
 
     &#top {
         margin: 9px 0 0 0;
@@ -66,16 +67,55 @@
     & #bottom {
         transform: rotate(-45deg) translate(0.85rem, -0.75rem);
     }
+
+    & #hamburger_circle {
+        transform: translateX(0.25rem);
+        opacity: 0;
+    }
 }
 
 .navDropdown {
-    position: relative;
-    height: 20rem;
-    bottom: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    right: 0;
+    top: -19rem;
     background-color: var(--secondary);
-    transition: all .5s;
+    width: min(25rem, 100%);
+    transition: all ease-out .25s;
+}
+
+.navDropdown a {
+    text-decoration: none;
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
+    color: black;
+    border-bottom: 1px solid #6ca164;
+
+    &:is(:hover, :active){
+        background-color: var(--secondaryHover);
+    }
+
+    &:first-child {
+        padding-top: 1.5rem;
+    }
+
+    &:nth-child(5) {
+        border-bottom: none;
+    }
 }
 
 .navDropdown.open {
-    transform: translateY(20rem);
+    transform: translateY(25rem);
+}
+
+#navRoundBottom {
+    position: relative;
+    top: 2.5rem;
+    background-color: var(--secondary);
+    border-radius: 50%;
+    height: 5rem;
+    width: 100%;
 }
