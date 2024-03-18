@@ -82,7 +82,7 @@
     right: 0;
     top: -19rem;
     background-color: var(--secondary);
-    width: min(25rem, 100%);
+    width: 100%;
     transition: all ease-out .25s;
 }
 
@@ -92,7 +92,7 @@
     text-align: center;
     padding: 1rem 0;
     color: black;
-    border-bottom: 1px solid #6ca164;
+    border-bottom: 1px solid #76c76b;
 
     &:is(:hover, :active){
         background-color: var(--secondaryHover);
@@ -113,9 +113,9 @@
 
 #navRoundBottom {
     position: relative;
-    top: 2.5rem;
+    top: 1.25rem;
     background-color: var(--secondary);
     border-radius: 50%;
-    height: 5rem;
+    height: 2.5rem;
     width: 100%;
 }
