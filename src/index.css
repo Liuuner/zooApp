@@ -8,5 +8,6 @@ html, body {
 html {
     --main: #fff;
     --secondary: #94db89;
+
     --secondaryHover: #76c76b;
 }

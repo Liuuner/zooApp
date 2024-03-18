@@ -25,7 +25,7 @@
     position: relative;
     width: 125px;
     height: 110px;
-    background-color: #fff;
+    background-color: var(--main);
     border-radius: 50%;
     top: -1.5rem;
     right: 1rem;
@@ -92,7 +92,7 @@
     text-align: center;
     padding: 1rem 0;
     color: black;
-    border-bottom: 1px solid #76c76b;
+    border-bottom: 1px solid var(--secondaryHover);
 
     &:is(:hover, :active){
         background-color: var(--secondaryHover);
