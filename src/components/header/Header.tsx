@@ -26,7 +26,7 @@ function Header() {
                 <Link to={"/home"} onClick={toggleOpen}>Home</Link>
                 <Link to={"/tickets"} onClick={toggleOpen}>Tickets</Link>
                 <Link to={"/guides"} onClick={toggleOpen}>Guides</Link>
-                <Link to={"https://youtu.be/dQw4w9WgXcQ?si=utjQSltq19_uwWLf"} onClick={toggleOpen}>Impressum</Link>
+                <Link to={"/impressum"} onClick={toggleOpen}>Impressum</Link>
                 <Link to={"https://youtu.be/dQw4w9WgXcQ?si=utjQSltq19_uwWLf"} onClick={toggleOpen}>Hilfe</Link>
                 <div id={"navRoundBottom"}></div>
             </nav>
