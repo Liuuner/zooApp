@@ -13,17 +13,17 @@ function Header() {
     }
 
     function handleClickOutside(event: Event) {
-        if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+        if (open && headerRef.current && !headerRef.current.contains(event.target as Node)) {
             setOpen(false);
         }
     }
 
     useEffect(() => {
-        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('mouseup', handleClickOutside);
         return () => {
-            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('mouseup', handleClickOutside);
         };
-    }, [headerRef]);
+    }, [open]);
 
     return (
         <div ref={headerRef}>
