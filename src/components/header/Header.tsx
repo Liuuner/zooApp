@@ -1,18 +1,32 @@
 import {Link} from "react-router-dom";
-import {useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import logo from "/public/logo.png";
 
 import "./header.css"
 
 function Header() {
-    const [open, setOpen] = useState<boolean>(false)
+    const [open, setOpen] = useState<boolean>(false);
+    const headerRef = useRef<HTMLDivElement>(null);
 
     function toggleOpen() {
         setOpen(!open);
     }
 
+    function handleClickOutside(event: Event) {
+        if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
+            setOpen(false);
+        }
+    }
+
+    useEffect(() => {
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [headerRef]);
+
     return (
-        <div>
+        <div ref={headerRef}>
             <div className={"header"}>
                 <a target={"_blank"} href="https://www.zoo.ch/de"><img src={logo} alt="logo" className={"logo"}/></a>
                 <div className={`hamburger${open ? " open" : ""}`} onClick={() => toggleOpen()}>
