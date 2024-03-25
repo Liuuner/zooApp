@@ -1,31 +1,46 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
+#openingHoursTitle {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-header {
-    background-color: #009688;
-    color: #fff;
-    padding: 20px;
+.paper {
+    margin: 1rem;
+    padding: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.openingHoursTable tr td{
     text-align: center;
+    font-size: 15px;
 }
 
-main {
-    padding: 20px;
+.openingHoursTable tr th{
+    font-size: 18px;
 }
 
-section {
-    margin-bottom: 20px;
+.newsPaper {
+    margin: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
-h2 {
-    color: #009688;
+#news1Img {
+    width: 100%;
+    border-radius: 1rem;
 }
 
-footer {
-    background-color: #009688;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
+#news2Img {
+    width: 100%;
+    border-radius: 1rem;
+}
+
+.imageText {
+    color: white;
+    margin-left: 1rem;
+    margin-top: -2.8rem;
 }
