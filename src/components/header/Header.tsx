@@ -31,7 +31,7 @@ function Header() {
                 <div id={"navRoundBottom"}></div>
             </nav>
         </div>
-    )
+    )  
 }
 
 export default Header;

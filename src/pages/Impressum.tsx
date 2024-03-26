@@ -24,22 +24,18 @@ const Impressum: React.FC = () => {
   return (
     <div style={containerStyle}>
       <div style={headingStyle}>Impressum</div>
-      <p>Wix.com Ltd.<br />
-      Nemal St. 40<br />
-      6350671 Tel Aviv<br />
-      Israel</p>
+      <p>Zürich Zoo<br />
+      Winterthurerstr.3<br />
+      8400 Winterthur<br />
+      Switzerland</p>
 
-      <p>Telefon: +972 (3) 545-4900<br />
-      Fax: +972 (3) 546 4407<br />
-      E-Mail-Adresse: <a href="mailto:support@wix.com" style={linkStyle}>support@wix.com</a></p>
+      <p>Telefon: +41 79 723 28 91<br />
+      E-Mail-Adresse: <a href="mailto:support@zuerizoo.ch" style={linkStyle}>support@zuerizoo.ch</a></p>
 
-      <p>Vertreten durch den Aufsichtsrat: <a href="https://investors.wix.com/board-of-directors" style={linkStyle}>https://investors.wix.com/board-of-directors</a></p>
+      <p>Mehr infos <a href="https://youtu.be/HIcSWuKMwOw?si=6JSHVBmY456OMUXZ" style={linkStyle}>Hier</a></p>
 
-      <p>Wix.com Ltd. ist ein in Israel eingetragenes Unternehmen.<br />
-      Handelsregisternummer des Staates Israel: 513881177<br />
-      Mehrwertsteuer-Identifikationsnummer: 513881177</p>
+      <p>Der Zoo Zürich in der Schweiz beherbergt eine vielfältige <br /> Sammlung von Tieren aus aller Welt in modernen Anlagen. <br /> Besucher können Elefanten, Giraffen, Löwen, Tiger, <br /> Pinguine, Gorillas und mehr sehen. Es gibt auch <br /> Bildungsprogramme und Veranstaltungen für alle <br /> Altersgruppen.</p>
 
-      <p>Wix ist eine Plattform zur Erstellung von Websites.</p>
     </div>
   );
 };
