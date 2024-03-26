@@ -6,7 +6,7 @@ Mit der Applikation können Sie online Tickets kaufen und erfahren alle wichtige
 ## Step by Step
 1. Klonen Sie das Projekt auf ihren PC/Laptop.
 2. Öffnen Sie das Projekt im Terminal.
-3. Installieren sie die node-modules mit `npm i`
+3. Installieren sie die node-modules mit `npm install`
 4. Geben Sie den Befehl `npm run dev` ein um das Projekt zu starten
 
 ## Links
