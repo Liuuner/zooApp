@@ -5,6 +5,7 @@ import Footer from "src/components/Footer.tsx";
 import Home from "src/pages/Home.tsx";
 import Tickets from "src/pages/Tickets.tsx";
 import Guides from "src/pages/Guides.tsx";
+import Map from "src/pages/Map/Map.tsx";
 import NotFound from "src/pages/NotFound.tsx";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
                 <Route path={"/home"} element={<Home/>}/>
                 <Route path={"/tickets"} element={<Tickets/>}/>
                 <Route path={"/guides"} element={<Guides/>}/>
+                <Route path={"/map"} element={<Map/>}/>
                 <Route path={"*"} element={<NotFound/>}/>
             </Routes>
             <Footer/>
