@@ -1,0 +1,68 @@
+.cookie_popup {
+    position: fixed;
+    bottom: -5rem;
+    left: 0;
+    background: var(--secondary);
+    width: 100vw;
+    height: 5rem;
+    transition: all ease-out 1s;
+
+    & h1 {
+        text-align: center;
+    }
+
+    &.open {
+        bottom: 0;
+    }
+}
+
+.cookieContent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0 .5rem;
+
+    & .cookie_text {
+        width: 15rem;
+        margin: 0;
+        height: 75%;
+
+        & * {
+            margin: 0;
+        }
+    }
+
+    & .cookie_actions {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: .25rem;
+        width: 7.5rem;
+        height: 75%;
+    }
+}
+
+.cookie_actions-button {
+    border: none;
+    border-radius: .75rem;
+    padding: .5rem;
+    text-align: center;
+    width: 7.5rem;
+
+    &#buttonAccept {
+        background-color: var(--secondary);
+        border: 1px solid black;
+        height: 75%;
+
+        &:is(:hover, :active) {
+            background-color: var(--secondaryHover);
+        }
+    }
+
+    &#linkDecline {
+        padding: 0;
+        font-size: 15px;
+        color: #184b12;
+    }
+}
