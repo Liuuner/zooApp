@@ -26,7 +26,7 @@ function Header() {
     }, [open]);
 
     return (
-        <div ref={headerRef}>
+        <div id={"header"} ref={headerRef}>
             <div className={"header"}>
                 <a target={"_blank"} href="https://www.zoo.ch/de"><img src={logo} alt="logo" className={"logo"}/></a>
                 <div className={`hamburger${open ? " open" : ""}`} onClick={() => toggleOpen()}>
@@ -41,7 +41,7 @@ function Header() {
                 <Link to={"/tickets"} onClick={toggleOpen}>Tickets</Link>
                 <Link to={"/guides"} onClick={toggleOpen}>Guides</Link>
                 <Link to={"https://youtu.be/dQw4w9WgXcQ?si=utjQSltq19_uwWLf"} onClick={toggleOpen}>Impressum</Link>
-                <Link to={"https://youtu.be/dQw4w9WgXcQ?si=utjQSltq19_uwWLf"} onClick={toggleOpen}>Hilfe</Link>
+                <Link to={"/datenSchutzHinweis"} onClick={toggleOpen}>Daten Schutz Hinweis</Link>
                 <div id={"navRoundBottom"}></div>
             </nav>
         </div>

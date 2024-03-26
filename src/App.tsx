@@ -6,22 +6,49 @@ import Home from "src/pages/Home.tsx";
 import Tickets from "src/pages/Tickets.tsx";
 import Guides from "src/pages/Guides.tsx";
 import NotFound from "src/pages/NotFound.tsx";
+import DatenSchutzHinweis from "src/pages/DatenSchutzHinweis.tsx";
+import CookiePopup from "src/components/cookiePopup/CookiePopup.tsx";
+import {useEffect, useState} from "react";
+import {useCookies} from "react-cookie";
 
 function App() {
+    const [cookies, setCookies] = useCookies(["cookies_accepted"])
+    const [cookieAccepted, setCookieAccepted] = useState<boolean>(true)
+
+    function setCookieTrue() {
+        // Um eine verzögerung des öffnens zu erzeugen
+        setCookies("cookies_accepted", true, {path: '/', sameSite: 'none', secure: true})
+        setTimeout(() => {
+            setCookieAccepted(true)
+        }, 500)
+    }
+
+    useEffect(() => {
+        setTimeout(() => {
+            if (!cookies.cookies_accepted) {
+                setCookieAccepted(false);
+            }
+        }, 2000)
+    }, []);
 
     return (
         <>
             <Header/>
-            <Routes>
-                <Route path={"/"} element={<Home/>}/>
-                <Route path={"/home"} element={<Home/>}/>
-                <Route path={"/tickets"} element={<Tickets/>}/>
-                <Route path={"/guides"} element={<Guides/>}/>
-                <Route path={"*"} element={<NotFound/>}/>
-            </Routes>
+            <main>
+                <Routes>
+                    <Route path={"/"} element={<Home/>}/>
+                    <Route path={"/home"} element={<Home/>}/>
+                    <Route path={"/tickets"} element={<Tickets/>}/>
+                    <Route path={"/guides"} element={<Guides/>}/>
+                    <Route path={"/datenSchutzHinweis"} element={<DatenSchutzHinweis/>}/>
+                    <Route path={"*"} element={<NotFound/>}/>
+                </Routes>
+            </main>
             <Footer/>
+
+            <CookiePopup cookieAccepted={cookieAccepted} setCookieTrue={setCookieTrue}/>
         </>
-)
+    )
 }
 
 export default App
