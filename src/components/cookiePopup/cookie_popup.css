@@ -2,7 +2,7 @@
     position: fixed;
     bottom: -5rem;
     left: 0;
-    background: linear-gradient(var(--secondary), lightgray);
+    background: var(--secondary);
     width: 100vw;
     height: 5rem;
     transition: all ease-out 1s;
@@ -15,6 +15,7 @@
         bottom: 0;
     }
 }
+
 .cookieContent {
     display: flex;
     justify-content: center;
@@ -25,6 +26,7 @@
     & .cookie_text {
         width: 15rem;
         margin: 0;
+        height: 75%;
 
         & * {
             margin: 0;
@@ -37,6 +39,7 @@
         justify-content: center;
         gap: .25rem;
         width: 7.5rem;
+        height: 75%;
     }
 }
 
@@ -50,14 +53,16 @@
     &#buttonAccept {
         background-color: var(--secondary);
         border: 1px solid black;
+        height: 75%;
 
         &:is(:hover, :active) {
             background-color: var(--secondaryHover);
         }
     }
 
-    &#buttonDecline {
-        border: 1px solid black;
-        background-color: transparent;
+    &#linkDecline {
+        padding: 0;
+        font-size: 15px;
+        color: #184b12;
     }
 }

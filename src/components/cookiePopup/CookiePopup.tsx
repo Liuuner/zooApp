@@ -11,13 +11,13 @@ export default function CookiePopup({cookieAccepted, setCookieTrue}: cookiePopup
     return (
         <div className={`cookie_popup${!cookieAccepted ? " open" : ""}`}>
             <div className={"cookieContent"}>
-                <p className={"cookie_text"}>
-                    <div>Bestätigen sie die hiermit die</div>
+                <div className={"cookie_text"}>
+                    <p>Bestätigen sie die hiermit die verwendung von Cookies und die </p>
                     <Link to={"/datenSchutzHinweis"}>Datenschutz-Richtlinien</Link>
-                </p>
+                </div>
                 <div className={"cookie_actions"}>
                     <button className={"cookie_actions-button"} id={"buttonAccept"} onClick={setCookieTrue}>Akzeptieren</button>
-                    <button className={"cookie_actions-button"} id={"buttonDecline"}>Ablehnen</button>
+                    <a href={"https://google.com"} className={"cookie_actions-button"} id={"linkDecline"}>Ablehnen</a>
                 </div>
             </div>
         </div>

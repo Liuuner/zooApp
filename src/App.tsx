@@ -16,6 +16,7 @@ function App() {
     const [cookieAccepted, setCookieAccepted] = useState<boolean>(true)
 
     function setCookieTrue() {
+        // Um eine verzögerung des öffnens zu erzeugen
         setCookies("cookies_accepted", true, {path: '/', sameSite: 'none', secure: true})
         setTimeout(() => {
             setCookieAccepted(true)
@@ -33,7 +34,7 @@ function App() {
     return (
         <>
             <Header/>
-            <div id={"content"}>
+            <main>
                 <Routes>
                     <Route path={"/"} element={<Home/>}/>
                     <Route path={"/home"} element={<Home/>}/>
@@ -42,7 +43,7 @@ function App() {
                     <Route path={"/datenSchutzHinweis"} element={<DatenSchutzHinweis/>}/>
                     <Route path={"*"} element={<NotFound/>}/>
                 </Routes>
-            </div>
+            </main>
             <Footer/>
 
             <CookiePopup cookieAccepted={cookieAccepted} setCookieTrue={setCookieTrue}/>
