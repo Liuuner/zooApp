@@ -1,30 +1,23 @@
-# React + TypeScript + Vite
+# Zoo Zürich
+Diese Applikation ist eine Handy App für denn Zoo Zürich und ist lediglich ein Schulprojekt. (Bitte verklagt uns nicht)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Mit der Applikation können Sie online Tickets kaufen und erfahren alle wichtigen Informationen über den Zoo, darunter auch die Öffnungszeiten.
 
-Currently, two official plugins are available:
+## Step by Step
+1. Klonen Sie das Projekt auf ihren PC/Laptop.
+2. Öffnen Sie das Projekt im Terminal.
+3. Installieren sie die node-modules mit `npm install`
+4. Geben Sie den Befehl `npm run dev` ein um das Projekt zu starten
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Links
+### Figma
+- https://www.figma.com/file/tqGWpj9rVpugknje2usqNs/Zoo?type=design&node-id=0%3A1&mode=design&t=j03hO6meXYzGCS0V-1
 
-## Expanding the ESLint configuration
+### Applikation
+- https://liuuner.github.io/zooApp/
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Autoren
+- Liun
+- Fabian
+- Yanick
+- Yanik
