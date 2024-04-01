@@ -4,7 +4,7 @@ import Header from "src/components/header/Header.tsx";
 import Footer from "src/components/Footer.tsx";
 import Home from "src/pages/Home.tsx";
 import Tickets from "src/pages/Tickets.tsx";
-import Guides from "src/pages/Guides.tsx";
+import Guides from "src/pages/guides/Guides.tsx";
 import NotFound from "src/pages/NotFound.tsx";
 import DatenSchutzHinweis from "src/pages/DatenSchutzHinweis.tsx";
 import CookiePopup from "src/components/cookiePopup/CookiePopup.tsx";
