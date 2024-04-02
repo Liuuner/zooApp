@@ -1,4 +1,4 @@
-import {FormEvent, useState} from "react";
+import {FormEvent, useEffect, useState} from "react";
 import {CustomerModel, TicketModel, TicketTypeEnum} from "src/model/tickes.ts";
 
 import "./guides.css"
@@ -11,6 +11,8 @@ export default function Guides() {
     function addTicket(e: FormEvent) {
         e.preventDefault();
 
+        customers.pop();
+
         let newTickets: TicketModel[] = [
             ...JSON.parse(localStorage.getItem("tickets") || "[]"),
             {boughtAt: new Date(), entryAt: entryAt, ticketType: ticketType, customers: customers}
@@ -18,6 +20,15 @@ export default function Guides() {
 
         localStorage.setItem("tickets", JSON.stringify(newTickets));
     }
+
+    useEffect(() => {
+        console.log(customers);
+        if (customers[customers.length - 1].name || customers[customers.length - 1].age) {
+            addCustomer();
+        } else if (customers.length > 1) {
+            customers.pop();
+        }
+    }, [customers[customers.length - 1].name, customers[customers.length - 1].age]);
 
     const updateCustomer = (index: number, field: keyof CustomerModel, value: string) => {
         const newCustomers = [...customers];
@@ -30,6 +41,7 @@ export default function Guides() {
     };
 
     function addCustomer() {
+        console.log("test")
         setCustomers([...customers, {name: "", age: null}]);
     }
 
@@ -51,8 +63,10 @@ export default function Guides() {
                 <div>
                     {customers.map((customer, index) =>
                         <div key={index}>
-                            <input type="text" value={customer.name} onChange={e => updateCustomer(index, 'name', e.target.value)} />
-                            <input type="number" value={customer.age ?? ""} min={0} onChange={e => updateCustomer(index, 'age', e.target.value)} />
+                            <input type="text" value={customer.name}
+                                   onChange={e => updateCustomer(index, 'name', e.target.value)}/>
+                            <input type="number" value={customer.age ?? ""} min={0}
+                                   onChange={e => updateCustomer(index, 'age', e.target.value)}/>
                         </div>
                     )}
                     <div onClick={addCustomer}>+</div>
