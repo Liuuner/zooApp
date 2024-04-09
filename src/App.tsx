@@ -5,11 +5,8 @@ import Footer from "src/components/Footer.tsx";
 import Home from "src/pages/Home.tsx";
 import Tickets from "src/pages/Tickets.tsx";
 import Guides from "src/pages/Guides.tsx";
-<<<<<<< HEAD
 import Map from "src/pages/Map/Map.tsx";
-=======
 import Impressum from "src/pages/Impressum.tsx";
->>>>>>> master
 import NotFound from "src/pages/NotFound.tsx";
 import DatenSchutzHinweis from "src/pages/DatenSchutzHinweis.tsx";
 import CookiePopup from "src/components/cookiePopup/CookiePopup.tsx";
@@ -40,7 +37,6 @@ function App() {
     return (
         <>
             <Header/>
-            <main>
                 <Routes>
                     <Route path={"/"} element={<Home/>}/>
                     <Route path={"/home"} element={<Home/>}/>
@@ -51,7 +47,6 @@ function App() {
                     <Route path={"/impressum"} element={<Impressum/>}/>
                     <Route path={"*"} element={<NotFound/>}/>
                 </Routes>
-            </main>
             <Footer/>
 
             <CookiePopup cookieAccepted={cookieAccepted} setCookieTrue={setCookieTrue}/>
