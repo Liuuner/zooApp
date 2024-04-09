@@ -10,7 +10,7 @@
     </parent>
     <groupId>ch.bbw.lt</groupId>
     <artifactId>zoo-backend</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1</version>
     <name>zoo-backend</name>
     <description>zoo-backend</description>
     <properties>

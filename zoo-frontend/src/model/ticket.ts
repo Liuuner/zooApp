@@ -57,6 +57,7 @@ export function sortAfterDate(a: TicketModel, b: TicketModel) {
 }
 
 // Extend the window object
+/*
 interface Window {
     myMethod: () => void;
 }
@@ -64,4 +65,4 @@ interface Window {
 // Define the custom method
 window.myMethod = () => {
     console.log("Custom method called!");
-};
+};*/
