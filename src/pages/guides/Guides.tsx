@@ -6,7 +6,7 @@ import "./guides.css"
 export default function Guides() {
     const [entryAt, setEntryAt] = useState<Date>(new Date());
     const [ticketType, setTicketType] = useState<TicketTypeEnum>("SINGLE_ENTRY");
-    const [customers, setCustomers] = useState<CustomerModel[]>([{name: "", age: null}]);
+    const [customers, setCustomers] = useState<CustomerModel[]>([{name: "", age: 0}]);
 
     function addTicket(e: FormEvent) {
         e.preventDefault();
@@ -22,57 +22,73 @@ export default function Guides() {
     }
 
     useEffect(() => {
-        console.log(customers);
         if (customers[customers.length - 1].name || customers[customers.length - 1].age) {
             addCustomer();
-        } else if (customers.length > 1) {
-            customers.pop();
+        } else if (customers.length > 1 && !customers[customers.length - 2].name && !customers[customers.length - 2].age) {
+            setCustomers(customers => customers.slice(0, -1));
         }
-    }, [customers[customers.length - 1].name, customers[customers.length - 1].age]);
+    }, [customers]);
+
 
     const updateCustomer = (index: number, field: keyof CustomerModel, value: string) => {
         const newCustomers = [...customers];
         if (field === "age") {
-            newCustomers[index]["age"] = Number(value);
+            newCustomers[index].age = Number(value);
         } else {
-            newCustomers[index]["name"] = value;
+            newCustomers[index].name = value;
         }
         setCustomers(newCustomers);
     };
 
     function addCustomer() {
-        console.log("test")
-        setCustomers([...customers, {name: "", age: null}]);
+        setCustomers([...customers, {name: "", age: 0}]);
     }
 
     return (
-        <>
+        <main>
             <h1>Guides</h1>
-            <form onSubmit={addTicket}>
-                <div>
-                    <input type={"radio"} name={"Single"} value={"SINGLE_ENTRY"} checked={ticketType === "SINGLE_ENTRY"}
-                           onChange={e => setTicketType(e.target.value as TicketTypeEnum)}/>
-                    <input type={"radio"} name={"Group"} value={"GROUP"} checked={ticketType === "GROUP"}
-                           onChange={e => setTicketType(e.target.value as TicketTypeEnum)}/>
-                    <input type={"radio"} name={"Guide"} value={"GUIDED_TOUR"} checked={ticketType === "GUIDED_TOUR"}
-                           onChange={e => setTicketType(e.target.value as TicketTypeEnum)}/>
+            <form className={"booking_form"} onSubmit={addTicket}>
+                <div className={"ticket_types"}>
+                    <div onClick={() => setTicketType("SINGLE_ENTRY")}
+                         className={`ticket_type ${ticketType === "SINGLE_ENTRY" ? "active" : ""}`}>
+                        <label>Einzel<br/>Eintritt</label>
+                    </div>
+
+                    <div onClick={() => setTicketType("GROUP")}
+                         className={`ticket_type ${ticketType === "GROUP" ? "active" : ""}`}>
+                        <label>Gruppen<br/>Eintritt</label>
+                    </div>
+
+                    <div onClick={() => setTicketType("GUIDED_TOUR")}
+                         className={`ticket_type ${ticketType === "GUIDED_TOUR" ? "active" : ""}`}>
+                        <label>Geführte<br/>Tour</label>
+                    </div>
                 </div>
-                <div>
-                    <input type="date" onChange={e => setEntryAt(new Date(e.target.value))}/>
-                </div>
-                <div>
+                <div className={"customer-wrapper"}>
                     {customers.map((customer, index) =>
-                        <div key={index}>
-                            <input type="text" value={customer.name}
+                        <div className={"customer_inputs"} key={index}>
+                            <input className={"name"} type="text" value={customer.name} placeholder={"name"}
                                    onChange={e => updateCustomer(index, 'name', e.target.value)}/>
-                            <input type="number" value={customer.age ?? ""} min={0}
-                                   onChange={e => updateCustomer(index, 'age', e.target.value)}/>
+                            <input className={"age"} type="number" value={customer.age !== 0 ? Number(customer.age).toString() : ""} min={0}
+                                   max={150} placeholder={"alter"}
+                                   onChange={e => {
+                                       updateCustomer(index, 'age', e.target.value);
+                                   }}/>
+                            <div className={"price"}>{customer.age < 6 ? 0 : customer.age <= 15 ? 15 : 25} CHF</div>
                         </div>
                     )}
-                    <div onClick={addCustomer}>+</div>
+                    {customers.length > 1 && <div className={"gesamtpreis"}>
+                        <span>Gesamter Preis: </span><span>{customers.reduce((acc, customer) => acc + (customer.age < 6 ? 0 : customer.age <= 15 ? 15 : 25), 0)} CHF</span>
+                    </div>}
                 </div>
-                <button type={"submit"}>Buy</button>
+                <input className={"dateInput"} type="date" onChange={e => setEntryAt(new Date(e.target.value))}/>
+                <div className={"buy_buttons"}>
+                    <button type={"submit"}><img src="/twint.png" alt="TWINT"/><span>TWINT</span></button>
+                    <button type={"submit"}><img src="/kartenzahlung.png"
+                                                 alt="Kartenzahlung"/><span>Kartenzahlung</span></button>
+                    <button type={"submit"}><img src="/apple.png" alt="Apple-Pay"/><span>PAY</span></button>
+                </div>
             </form>
-        </>
+        </main>
     )
 }

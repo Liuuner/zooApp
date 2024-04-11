@@ -36,17 +36,15 @@ function App() {
     return (
         <>
             <Header/>
-            <main>
-                <Routes>
-                    <Route path={"/"} element={<Home/>}/>
-                    <Route path={"/home"} element={<Home/>}/>
-                    <Route path={"/tickets"} element={<Tickets/>}/>
-                    <Route path={"/guides"} element={<Guides/>}/>
-                    <Route path={"/datenSchutzHinweis"} element={<DatenSchutzHinweis/>}/>
-                    <Route path={"/impressum"} element={<Impressum/>}/>
-                    <Route path={"*"} element={<NotFound/>}/>
-                </Routes>
-            </main>
+            <Routes>
+                <Route path={"/"} element={<Home/>}/>
+                <Route path={"/home"} element={<Home/>}/>
+                <Route path={"/tickets"} element={<Tickets/>}/>
+                <Route path={"/guides"} element={<Guides/>}/>
+                <Route path={"/datenSchutzHinweis"} element={<DatenSchutzHinweis/>}/>
+                <Route path={"/impressum"} element={<Impressum/>}/>
+                <Route path={"*"} element={<NotFound/>}/>
+            </Routes>
             <Footer/>
 
             <CookiePopup cookieAccepted={cookieAccepted} setCookieTrue={setCookieTrue}/>

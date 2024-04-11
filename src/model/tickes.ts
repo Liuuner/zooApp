@@ -2,7 +2,7 @@ export type TicketTypeEnum = "GROUP" | "GUIDED_TOUR" | "SINGLE_ENTRY";
 
 export type CustomerModel = {
     name: string;
-    age: number | null;
+    age: number;
 }
 
 export type TicketModel = {

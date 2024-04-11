@@ -1,0 +1,117 @@
+.booking_form {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.ticket_types {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.ticket_type {
+    padding: 1rem .25rem;
+    width: 100%;
+    border: solid var(--secondary) .25rem;
+    text-align: center;
+    border-radius: .5rem;
+
+    &.active {
+        background-color: var(--secondary);
+    }
+
+    &:hover:not(.active) {
+        background-color: var(--secondaryHover);
+    }
+}
+
+.customer-wrapper {
+    background-color: var(--secondary);
+    border-radius: .5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    min-height: 6.5rem;
+}
+
+.customer_inputs {
+    display: flex;
+    gap: .5rem;
+    width: 100%;
+
+    & .name {
+        width: 50%;
+        padding: .25rem;
+        border: none;
+        outline: none;
+    }
+
+    & .age {
+        width: 25%;
+        padding: .25rem;
+        border: none;
+        outline: none;
+    }
+
+    & .price {
+        display: flex;
+        align-items: center;
+        justify-content: right;
+        width: 20%;
+    }
+}
+
+.gesamtpreis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+}
+
+.dateInput {
+    width: 50%;
+    padding: .5rem;
+    border: var(--secondary) solid .25rem;
+    border-radius: .5rem;
+    outline: none;
+}
+
+.buy_buttons {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+
+    & button {
+        width: 100%;
+        padding: .5rem .5rem;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: .1rem;
+        border-radius: .5rem;
+
+        & img {
+            width: 2rem;
+            height: auto;
+        }
+
+        &:first-child {
+            background-color: black;
+            color: white;
+
+            &:hover {
+                background-color: #212121;
+            }
+        }
+
+        &:nth-child(2) {
+            background-color: dodgerblue;
+
+            &:hover {
+                background-color: cornflowerblue;
+            }
+        }
+    }
+}
