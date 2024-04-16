@@ -4,7 +4,7 @@
     justify-content: space-between;
     background-color: var(--secondary);
     padding: 1rem;
-    z-index: 5;
+    z-index: 1001;
     overflow: hidden;
     box-shadow: 0 0 12px 1px rgba(0, 0, 0, 0.3);
 }
@@ -82,6 +82,7 @@
     right: 0;
     z-index: 4;
     top: -19rem;
+    z-index: 1000;
     background-color: var(--secondary);
     width: 100%;
     transition: all ease-out .25s;
