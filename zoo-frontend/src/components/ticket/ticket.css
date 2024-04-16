@@ -1,0 +1,77 @@
+.tickets {
+    --ticket-border-radius: 1.5rem;
+    --ticket-height: 9rem;
+    --ticket-spacing: 1rem;
+    width: 100%;
+}
+
+.ticket {
+    background-color: var(--secondary);
+    height: var(--ticket-height);
+    width: 100%;
+    margin-bottom: var(--ticket-spacing);
+    border-radius: var(--ticket-border-radius) calc(var(--ticket-border-radius) / 3) var(--ticket-border-radius) var(--ticket-border-radius);
+    display: flex;
+}
+
+.ticket:is(:active, :hover) {
+    background-color: var(--secondaryHover);
+}
+
+.qrCodeContainer {
+    background-color: var(--secondaryDark);
+    border-radius: var(--ticket-border-radius);
+    aspect-ratio: 1/1;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    
+    &.open {
+        position: absolute;
+        height: 100vw;
+        z-index: 1000;
+        left: 0;
+        /*left: calc(5vw / 2);*/
+        
+    }
+}
+
+.qrCodeContainer > img {
+    height: 100%;
+    aspect-ratio: 1/1;
+    filter: invert();
+}
+
+.ticketContent {
+    width: 100%;
+    padding-left: 1rem;
+    
+    .ticketTitle {
+        font-weight: bold;
+    }
+}
+
+.ticket::after {
+    content: "";
+    display: block;
+    position: relative;
+    height: calc(var(--ticket-border-radius) + 1rem);
+    aspect-ratio: 1/1;
+    border-bottom-left-radius: var(--ticket-border-radius);
+    border-top-right-radius: calc(var(--ticket-border-radius) / 3);
+    outline: white solid 7px;
+}
+
+.ticket.active::after {
+    background-color: #05ff00;
+}
+
+.ticket.upcoming::after {
+    background-color: #ffd500;
+}
+
+.ticket.expired::after {
+    background-color: #ff0000;
+}
