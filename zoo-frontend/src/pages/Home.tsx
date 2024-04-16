@@ -36,11 +36,11 @@ function Home() {
                 </table>
             </Paper>
             <Paper className={"newsPaper"}>
-                <a href={"https://www.zoo.ch/de/zoonews/zwei-neue-im-regenwald"}><img className={"newsImg"} src="public/Vogel.png" /></a>
+                <a href={"https://www.zoo.ch/de/zoonews/zwei-neue-im-regenwald"}><img className={"newsImg"} src="/Vogel.png" /></a>
                 <h3 className={"imageText"}>ZWEI NEUE IM REGENWALD</h3>
             </Paper>
             <Paper className={"newsPaper"}>
-                <a href={"https://www.zoo.ch/de/zoonews"}><img className={"newsImg"} src="public/KaTierHalt.png"/></a>
+                <a href={"https://www.zoo.ch/de/zoonews"}><img className={"newsImg"} src="/KaTierHalt.png"/></a>
                 <h3 className={"imageText"}>GUT INFORMIERT: ZOONEWS</h3>
             </Paper>
         </div>

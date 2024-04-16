@@ -3,12 +3,13 @@ html, body, #root {
     width: 100vw;
     margin: 0;
     padding: 0;
-    font-family: Roboto;
+    font-family: Roboto, sans-serif;
 }
 
 html {
     --main: #fff;
     --secondary: #94db89;
+    --secondaryDark: #58924f;
 
     --secondaryHover: #76c76b;
 }
