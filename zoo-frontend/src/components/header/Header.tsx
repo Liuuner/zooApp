@@ -40,6 +40,7 @@ function Header() {
                 <Link to={"/home"} onClick={toggleOpen}>Home</Link>
                 <Link to={"/tickets"} onClick={toggleOpen}>Tickets</Link>
                 <Link to={"/guides"} onClick={toggleOpen}>Guides</Link>
+                <Link to={"/map"} onClick={toggleOpen}>Map</Link>
                 <Link to={"/impressum"} onClick={toggleOpen}>Impressum</Link>
                 <Link to={"/datenSchutzHinweis"} onClick={toggleOpen}>Daten Schutz Hinweis</Link>
                 <div id={"navRoundBottom"}></div>
