@@ -43,16 +43,10 @@
 
     & .name {
         width: 50%;
-        padding: .25rem;
-        border: none;
-        outline: none;
     }
 
     & .age {
-        width: 25%;
-        padding: .25rem;
-        border: none;
-        outline: none;
+        width: 35%;
     }
 
     & .price {
@@ -70,11 +64,7 @@
 }
 
 .dateInput {
-    width: 50%;
-    padding: .5rem;
-    border: var(--secondary) solid .25rem;
-    border-radius: .5rem;
-    outline: none;
+    width: 60%;
 }
 
 .buy_buttons {
@@ -97,7 +87,7 @@
             height: auto;
         }
 
-        &:first-child {
+        &.twint {
             background-color: black;
             color: white;
 
@@ -106,7 +96,7 @@
             }
         }
 
-        &:nth-child(2) {
+        &.creditCard {
             background-color: dodgerblue;
 
             &:hover {

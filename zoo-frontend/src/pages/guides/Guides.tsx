@@ -1,7 +1,12 @@
 import {FormEvent, useEffect, useState} from "react";
-import {CustomerModel, TicketModel, TicketTypeEnum} from "src/model/tickes.ts";
 
 import "./guides.css"
+import {CustomerModel, TicketModel, TicketTypeEnum} from "src/model/ticket.ts";
+import {TextField} from "@mui/material";
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import {Dayjs} from "dayjs";
 
 export default function Guides() {
     const [entryAt, setEntryAt] = useState<Date>(new Date());
@@ -13,7 +18,7 @@ export default function Guides() {
 
         customers.pop();
 
-        let newTickets: TicketModel[] = [
+        const newTickets: TicketModel[] = [
             ...JSON.parse(localStorage.getItem("tickets") || "[]"),
             {boughtAt: new Date(), entryAt: entryAt, ticketType: ticketType, customers: customers}
         ];
@@ -67,13 +72,35 @@ export default function Guides() {
                 <div className={"customer-wrapper"}>
                     {customers.map((customer, index) =>
                         <div className={"customer_inputs"} key={index}>
-                            <input className={"name"} type="text" value={customer.name} placeholder={"name"}
-                                   onChange={e => updateCustomer(index, 'name', e.target.value)}/>
-                            <input className={"age"} type="number" value={customer.age !== 0 ? Number(customer.age).toString() : ""} min={0}
-                                   max={150} placeholder={"alter"}
-                                   onChange={e => {
-                                       updateCustomer(index, 'age', e.target.value);
-                                   }}/>
+                            <TextField
+                                type={"text"}
+                                label={"Name"}
+                                variant={"outlined"}
+                                className={"name"}
+                                size={"small"}
+                                required
+                                value={customer.name}
+                                onChange={e => updateCustomer(index, 'name', e.target.value)}
+                            />
+                            <TextField
+                                type={"number"}
+                                label={"Alter"}
+                                variant={"outlined"}
+                                className={"age"}
+                                size={"small"}
+                                inputProps={{min: 0, max: 130}}
+                                required
+                                onKeyPress={e =>  {
+                                    if (e.which === 8) {
+                                        return;
+                                    }
+                                    if (e.which < 48 || e.which > 57) {
+                                        e.preventDefault();
+                                    }
+                                }}
+                                value={customer.age !== 0 ? Number(customer.age) : ""}
+                                onChange={e => updateCustomer(index, 'age', e.target.value)}
+                            />
                             <div className={"price"}>{customer.age < 6 ? 0 : customer.age <= 15 ? 15 : 25} CHF</div>
                         </div>
                     )}
@@ -81,12 +108,19 @@ export default function Guides() {
                         <span>Gesamter Preis: </span><span>{customers.reduce((acc, customer) => acc + (customer.age < 6 ? 0 : customer.age <= 15 ? 15 : 25), 0)} CHF</span>
                     </div>}
                 </div>
-                <input className={"dateInput"} type="date" onChange={e => setEntryAt(new Date(e.target.value))}/>
+
+                <LocalizationProvider dateAdapter={AdapterDayjs}>
+                    <DatePicker
+                        className={"dateInput"}
+                        format={"DD. MMMM YYYY"}
+                        onChange={(date: Dayjs | null) => date && setEntryAt(new Date(date.toDate()))}/>
+                </LocalizationProvider>
+
                 <div className={"buy_buttons"}>
-                    <button type={"submit"}><img src="/twint.png" alt="TWINT"/><span>TWINT</span></button>
-                    <button type={"submit"}><img src="/kartenzahlung.png"
-                                                 alt="Kartenzahlung"/><span>Kartenzahlung</span></button>
-                    <button type={"submit"}><img src="/apple.png" alt="Apple-Pay"/><span>PAY</span></button>
+                    {/*<button className={"twint"} type={"submit"}><img src="/twint.png" alt="TWINT"/><span>TWINT</span></button>*/}
+                    <button className={"creditCard"} type={"submit"}><img src="/kartenzahlung.png" alt="Kartenzahlung"/><span>Kartenzahlung</span>
+                    </button>
+                    {/*<button type={"submit"}><img src="/apple.png" alt="Apple-Pay"/><span>PAY</span></button>*/}
                 </div>
             </form>
         </main>
