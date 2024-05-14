@@ -1,14 +1,12 @@
 package ch.bbw.lt.zoobackend.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.ReadOnlyProperty;
 
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 @Builder
 @AllArgsConstructor
@@ -22,8 +20,14 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     @ReadOnlyProperty
-    public Date boughtAt;
-    public Date entryAt;
-    public TicketType ticketType;
-//    public List<Customer> customers;
+    private Date boughtAt;
+    private Date entryAt;
+    private TicketType ticketType;
+    @ManyToMany
+    @JoinTable(
+            name = "ticket_customer",
+            joinColumns = @JoinColumn(name = "ticket_id"),
+            inverseJoinColumns = @JoinColumn(name = "customer_id"))
+    @JsonIgnoreProperties("tickets")
+    private Set<Customer> customers;
 }

@@ -5,13 +5,15 @@ type TicketStatus = "expired" | "upcoming" | "active";
 export type CustomerModel = {
     name: string;
     age: number;
+    tickets?: TicketModel[];
 }
 
 export type TicketModel = {
     boughtAt: Date;
     entryAt: Date;
     ticketType: TicketTypeEnum;
-    customers: CustomerModel[];
+    price: number;
+    customers?: CustomerModel[];
 }
 
 export function getTicketStatus(ticket: TicketModel): TicketStatus {
@@ -55,14 +57,3 @@ export function sortAfterDate(a: TicketModel, b: TicketModel) {
 
     return a.entryAt.getTime() - b.entryAt.getTime();
 }
-
-// Extend the window object
-/*
-interface Window {
-    myMethod: () => void;
-}
-
-// Define the custom method
-window.myMethod = () => {
-    console.log("Custom method called!");
-};*/

@@ -1,6 +1,6 @@
 import Ticket from "src/components/ticket/Ticket.tsx";
 import {useEffect, useState} from "react";
-import {sortAfterDate, TicketModel} from "src/model/ticket.ts";
+import {sortAfterDate, TicketModel} from "src/model/types.ts";
 
 
 function Tickets() {

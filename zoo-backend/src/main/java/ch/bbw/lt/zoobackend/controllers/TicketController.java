@@ -1,13 +1,15 @@
 package ch.bbw.lt.zoobackend.controllers;
 
+import ch.bbw.lt.zoobackend.models.Customer;
 import ch.bbw.lt.zoobackend.models.Ticket;
-import ch.bbw.lt.zoobackend.repositories.TicketRepository;
+import ch.bbw.lt.zoobackend.services.CustomerService;
+import ch.bbw.lt.zoobackend.services.TicketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("/tickets")
@@ -15,60 +17,36 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class TicketController {
 
-    private final TicketRepository repos;
+    private final TicketService ticketService;
+    private final CustomerService customerService;
 
 
     @GetMapping()
     public ResponseEntity<Iterable<Ticket>> getTickets() {
-        Iterable<Ticket> tickets = repos.findAll();
-
-        return new ResponseEntity<>(tickets, HttpStatus.OK);
+        return ticketService.getTickets();
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<Ticket> getTicketById(@PathVariable String id) {
-        Optional<Ticket> ticket = repos.findById(id);
-
-        if (ticket.isPresent()) {
-            return new ResponseEntity<>(ticket.get(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+        return ticketService.getTicketById(id);
     }
 
     @PostMapping
     public ResponseEntity<Iterable<Ticket>> createTicket(@RequestBody Ticket ticket) {
-        try {
-            Ticket newTicket = repos.save(ticket);
-            return new ResponseEntity<>(repos.findAll(), HttpStatus.CREATED);
+        Set<Customer> customers = ticket.getCustomers();
 
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
+        customers.forEach(customerService::createCustomerOrNot);
+
+        return ticketService.createTicket(ticket);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Iterable<Ticket>> deleteTicket(@PathVariable String id) {
-
-        repos.deleteById(id);
-
-        Optional<Ticket> optionalTicket = repos.findById(id);
-
-        if (optionalTicket.isPresent()) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-
-        return new ResponseEntity<>(repos.findAll(), HttpStatus.OK);
+        return ticketService.deleteTicket(id);
     }
 
     @PutMapping()
-    public ResponseEntity<Iterable<Ticket>> updateTicket(@RequestBody Ticket reqTicket) {
-        if (repos.findById(reqTicket.getId()).isPresent()) {
-            Ticket updatedTicket = repos.save(reqTicket);
-            return new ResponseEntity<>(repos.findAll(), HttpStatus.OK);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    public ResponseEntity<Iterable<Ticket>> updateTicket(@RequestBody Ticket ticket) {
+        return ticketService.updateTicket(ticket);
     }
-
 }

@@ -1,11 +1,12 @@
 package ch.bbw.lt.zoobackend.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.data.annotation.ReadOnlyProperty;
+
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Builder
@@ -18,6 +19,15 @@ public class Customer {
     @ReadOnlyProperty
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    public String name;
-    public int age;
+
+    @ReadOnlyProperty
+    private String name;
+    private int age;
+    @ManyToMany(mappedBy = "customers")
+    @JsonIgnoreProperties("customers")
+    private Set<Ticket> tickets;
+
+    public String getId() {
+        return name;
+    }
 }

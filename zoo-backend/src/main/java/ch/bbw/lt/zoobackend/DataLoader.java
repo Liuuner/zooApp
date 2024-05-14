@@ -18,8 +18,8 @@ public class DataLoader implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) {
-        ticketRepos.saveAll(Arrays.asList(
+        /*ticketRepos.saveAll(Arrays.asList(
                 Ticket.builder().entryAt(new Date()).boughtAt(new Date()).ticketType(TicketType.GROUP).build()
-        ));
+        ));*/
     }
 }

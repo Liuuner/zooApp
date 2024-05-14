@@ -1,5 +1,5 @@
 import "src/components/ticket/ticket.css";
-import {countAdultsAndChildren, getTicketStatus, TicketModel, TicketTypeEnum} from "src/model/ticket.ts";
+import {countAdultsAndChildren, getTicketStatus, TicketModel, TicketTypeEnum} from "src/model/types.ts";
 import QrCode from "/qr-code.png";
 import {useState} from "react";
 
